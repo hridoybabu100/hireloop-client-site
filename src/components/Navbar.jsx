@@ -56,13 +56,13 @@ const Navbar = () => {
               <div className="w-px h-6 bg-zinc-700" />
               
               <Link 
-                href="/sign-in" 
+                href="/auth/singin" 
                 className="text-sm font-medium text-zinc-300 hover:text-white px-5 py-2 transition-colors"
               >
                 Sign In
               </Link>
               <Link 
-                href="/get-started" 
+                href="/auth/singup" 
                 className="bg-white hover:bg-zinc-100 text-zinc-900 px-6 py-2 rounded-2xl text-sm font-semibold transition-all active:scale-95"
               >
                 Get Started
