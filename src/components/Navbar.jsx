@@ -2,12 +2,28 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import {Button} from "@heroui/react";
 import { Menu, X, Briefcase, Building2, DollarSign } from 'lucide-react';
+import { authClient } from '@/lib/auth-client';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => setIsOpen(!isOpen);
+
+
+    const { 
+        data: session, 
+        //refetch the session
+    } = authClient.useSession() 
+    const user = session?.user
+    // console.log('The session is a', user);
+
+    //Log out Button Function
+    const handleLogOut = async() => {
+      await authClient.signOut();
+    }
+    
 
   return (
     <nav className="bg-zinc-950 border-b border-zinc-800 fixed w-full z-50">
@@ -55,12 +71,15 @@ const Navbar = () => {
               {/* Vertical Divider */}
               <div className="w-px h-6 bg-zinc-700" />
               
-              <Link 
+            {user ? <>
+            <p>Hi, welcome {user?.name}</p>
+             <Button onClick={handleLogOut} variant="danger">Logout</Button>
+            </> : <Link 
                 href="/auth/singin" 
                 className="text-sm font-medium text-zinc-300 hover:text-white px-5 py-2 transition-colors"
               >
                 Sign In
-              </Link>
+              </Link>}
               <Link 
                 href="/auth/singup" 
                 className="bg-white hover:bg-zinc-100 text-zinc-900 px-6 py-2 rounded-2xl text-sm font-semibold transition-all active:scale-95"
