@@ -2,7 +2,7 @@
 
 const SeekerPage = () => {
     return (
-        <div className='text-4xl py-20 text-white font-bold'>
+        <div className="text-white">
             I am a Jobs Seeker.
         </div>
     );

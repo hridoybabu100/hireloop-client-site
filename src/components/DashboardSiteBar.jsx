@@ -35,10 +35,10 @@ export function DashboardSiteBar() {
   );
 
   return (
-    <>
-      <aside className="hidden w-64 shrink-0 border-r border-default p-4 lg:block">{navContents}</aside>
+    <div className="mt-15 absolute right-0 -top-2  md:static">
+      <aside className="hidden w-60 shrink-0 border-r border-default p-4 lg:block">{navContents}</aside>
       <Drawer>
-        <Button className="lg:hidden" variant="secondary">
+        <Button className="lg:hidden mt-10 z-50" variant="secondary">
           <ArrowsOppositeToDots />
           SiteBar
         </Button>
@@ -47,13 +47,13 @@ export function DashboardSiteBar() {
             <Drawer.Dialog>
               <Drawer.CloseTrigger />
               <Drawer.Header>
-                <Drawer.Heading>Navigation</Drawer.Heading>
+                <Drawer.Heading>Profile</Drawer.Heading>
               </Drawer.Header>
               <Drawer.Body>{navContents}</Drawer.Body>
             </Drawer.Dialog>
           </Drawer.Content>
         </Drawer.Backdrop>
       </Drawer>
-    </>
+    </div>
   );
 }
