@@ -35,7 +35,7 @@ export function DashboardSiteBar() {
   );
 
   return (
-    <div className="mt-15 absolute right-0 -top-2  md:static">
+    <div className="mt-15">
       <aside className="hidden w-60 shrink-0 border-r border-default p-4 lg:block">{navContents}</aside>
       <Drawer>
         <Button className="lg:hidden mt-10 z-50" variant="secondary">
