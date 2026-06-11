@@ -19,6 +19,9 @@ import {
   DollarSign, 
   House 
 } from '@gravity-ui/icons';
+import { createJob } from '@/lib/actions/job';
+import { toast } from 'react-toastify';
+import { redirect } from 'next/navigation';
 
 export default function PostJobPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -53,6 +56,7 @@ export default function PostJobPage() {
   ];
 
   const handleSubmit = async (e) => {
+  
     e.preventDefault();
     setIsSubmitting(true);
 
@@ -73,10 +77,20 @@ export default function PostJobPage() {
     // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 1500));
     
-    alert('Job posted successfully! It is now publicly visible.');
+    // alert('Job posted successfully! It is now publicly visible.');
     setIsSubmitting(false);
     
     // In real app: router.push('/dashboard/recruiter/jobs');
+
+    //Api call and database e data post
+
+    const res = await createJob(fullJobData);
+    // console.log('the res is a', res);
+    
+    if(res){
+        toast.success("Job create sucessfully done.")
+        redirect("/")
+    }
   };
 
   return (
